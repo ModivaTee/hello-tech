@@ -21,20 +21,14 @@ nav.querySelectorAll("a").forEach((a) =>
   })
 );
 
-// Portfolio filter
-const filters = document.querySelectorAll(".filter");
-const tiles = document.querySelectorAll(".tile");
-filters.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    filters.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    const f = btn.dataset.filter;
-    tiles.forEach((t) => t.classList.toggle("hidden", f !== "all" && t.dataset.cat !== f));
-  })
+// "Enquire" buttons pre-select the package in the contact form
+const packageSelect = document.getElementById("package-select");
+document.querySelectorAll("[data-package]").forEach((btn) =>
+  btn.addEventListener("click", () => { packageSelect.value = btn.dataset.package; })
 );
 
 // Reveal on scroll
-const revealEls = document.querySelectorAll(".card, .steps li, .tile, .price-card, blockquote, .section-head");
+const revealEls = document.querySelectorAll(".card, .steps li, .price-card, .extra-card, .section-head, .about-photo");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) =>
@@ -57,7 +51,7 @@ if ("IntersectionObserver" in window) {
 // (e.g. Formspree: https://formspree.io/f/your-id). Until then, the form
 // opens the visitor's email app with the details pre-filled.
 const FORM_ENDPOINT = "";
-const CONTACT_EMAIL = "hello@evermoreevents.com";
+const CONTACT_EMAIL = "molujimi@gmail.com";
 
 const form = document.getElementById("contact-form");
 const status = form.querySelector(".form-status");
@@ -73,7 +67,7 @@ form.addEventListener("submit", async (e) => {
     if (!ok) valid = false;
   });
   if (!valid) {
-    status.textContent = "Please fill in your name, a valid email, and event type.";
+    status.textContent = "Please fill in your name, a valid email, and the occasion.";
     status.classList.add("err");
     return;
   }
@@ -103,7 +97,7 @@ form.addEventListener("submit", async (e) => {
     .map(([k, v]) => `${k[0].toUpperCase() + k.slice(1)}: ${v}`)
     .join("\n");
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    `Event inquiry from ${data.name}`
+    `Event enquiry from ${data.name}`
   )}&body=${encodeURIComponent(body)}`;
   status.textContent = "Opening your email app…";
   status.classList.add("ok");

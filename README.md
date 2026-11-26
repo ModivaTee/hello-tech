@@ -1,6 +1,6 @@
-# Evermore Events: Website
+# Events With Mo: Website
 
-A fast, responsive, single-page website for an event planning company. Plain HTML, CSS, and JavaScript with no build step.
+A responsive single-page website for Events With Mo, a London-based event planning, styling and coordination company. Plain HTML, CSS and JavaScript with no build step. All copy and prices come from the Events With Mo brochure.
 
 ## Preview locally
 
@@ -11,18 +11,19 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## Make it yours
+## Files
 
-| What | Where |
+| File | What it holds |
 |---|---|
-| Company name, copy, services, prices | `index.html` |
-| Brand colors and fonts | the `:root` tokens at the top of `styles.css` |
-| Portfolio photos | put images in an `images/` folder and replace the `.tile-1` … `.tile-6` backgrounds in `styles.css` |
-| Contact email and form handling | `CONTACT_EMAIL` and `FORM_ENDPOINT` in `script.js` |
-| Testimonials | replace the placeholder reviews in `index.html` with real ones |
+| `index.html` | All page content: about, services, process, packages, contact |
+| `styles.css` | Design; brand colours are the `:root` tokens at the top |
+| `script.js` | Mobile menu, scroll effects, contact form (`CONTACT_EMAIL`, `FORM_ENDPOINT`) |
+| `images/` | Logo (`logo.png`, `logo-light.png` for dark backgrounds) and Mo's photo |
 
-The contact form opens the visitor's email app by default. To receive submissions directly, create a free form endpoint (for example, [Formspree](https://formspree.io)) and paste its URL into `FORM_ENDPOINT`.
+## Contact form
+
+By default, the form opens the visitor's email app with their answers pre-filled, addressed to `CONTACT_EMAIL`. To receive enquiries directly instead, create a free form endpoint (for example, [Formspree](https://formspree.io)) and paste its URL into `FORM_ENDPOINT` in `script.js`.
 
 ## Deploy
 
-Because it's a static site, you can host it free on GitHub Pages (Settings → Pages → deploy from this branch), Netlify, or Vercel.
+It's a static site, so it can be hosted free on GitHub Pages (Settings → Pages → deploy from a branch), Netlify or Vercel.
