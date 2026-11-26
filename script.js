@@ -27,8 +27,21 @@ document.querySelectorAll("[data-package]").forEach((btn) =>
   btn.addEventListener("click", () => { packageSelect.value = btn.dataset.package; })
 );
 
+// Gallery lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
+document.querySelectorAll(".shot").forEach((shot) =>
+  shot.addEventListener("click", () => {
+    const img = shot.querySelector("img");
+    lightboxImg.src = shot.dataset.full;
+    lightboxImg.alt = img.alt;
+    lightbox.showModal();
+  })
+);
+lightbox.addEventListener("click", () => lightbox.close());
+
 // Reveal on scroll
-const revealEls = document.querySelectorAll(".card, .steps li, .price-card, .extra-card, .section-head, .about-photo");
+const revealEls = document.querySelectorAll(".card, .steps li, .shot, .price-card, .extra-card, .section-head, .about-photo");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) =>
